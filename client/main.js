@@ -1,3 +1,4 @@
-const a = "hello";
-
-console.log("안녕 웹브라우저!");
+const pow = (numeric, powerCount) =>
+  Array(powerCount)
+    .fill(numeric)
+    .reduce((acc, cur) => (acc *= cur));
