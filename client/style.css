@@ -15,18 +15,25 @@ ul {
   list-style: none;
 }
 
-.userCard {
-  border: 1px solid black;
-  padding: 2rem;
+.ground {
+  width: 400px;
+  height: 300px;
+  border: 5px solid black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #66cd7b;
+  overflow: hidden;
+}
 
-  & img {
-    width: 100px;
-    height: 100px;
-    background-color: gray;
-  }
+#ball {
+  transition: all 0.3s;
+  pointer-events: none;
+}
 
-  .strong {
-    font-weight: bold;
-    color: black;
-  }
+.emotion {
+  font-size: 2rem;
+  position: absolute;
+  pointer-events: none;
 }

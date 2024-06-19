@@ -26,6 +26,12 @@ function setAttr(node, prop, value) {
     return;
   }
 
+  if (prop.startsWith('data')) {
+    prop = prop.slice(5);
+    node.dataset[prop] = value;
+    return;
+  }
+
   // prop에 data가 있어? 그럼 dataset으로 넣기
 
   if (!value)
