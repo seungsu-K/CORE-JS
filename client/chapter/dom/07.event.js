@@ -118,3 +118,9 @@ function throttle(callback, limit = 500) {
 // true일 때는 실행이 되지 않고, 타이머가 끝난 후 false로 바뀌면 다시 실행됨
 
 ground.addEventListener('mousemove', throttle(handleMove, 1000));
+
+//
+// addClass('.ground',['a','b','c'])
+// addClass('.ground','a','b','c')
+// addClass('.ground','a, b, c')
+// addClass('.ground',{a:'one',b:'two'})
