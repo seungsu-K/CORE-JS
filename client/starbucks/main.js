@@ -4,14 +4,23 @@ const header = document.querySelector('#header');
 
 const h = (t) => (t.style.height = 0);
 
+// aList.forEach((a) => {
+//   a.addEventListener('mouseenter', () => {
+//     const target = a.lastElementChild;
+
+//     depthList.forEach(h);
+
+//     target.style.height = '100px';
+//   });
+// });
+
+// header.addEventListener('mouseleave', () => depthList.forEach(h));
+
 aList.forEach((a) => {
-  a.addEventListener('mouseenter', () => {
-    const target = a.lastElementChild;
+  const target = a.lastElementChild;
 
-    depthList.forEach(h);
+  const tl = gsap.timeline({ paused: true }).to(target, { height: 100 });
 
-    target.style.height = '100px';
-  });
+  a.addEventListener('mouseenter', () => tl.play());
+  a.addEventListener('mouseleave', () => tl.reverse());
 });
-
-header.addEventListener('mouseleave', () => depthList.forEach(h));
