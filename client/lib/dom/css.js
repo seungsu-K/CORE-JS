@@ -1,6 +1,9 @@
+import { getNode } from './getNode.js';
+import { isString, isObject, isArray } from '../utils/type.js';
+
 // class 정의하는 함수
 
-function addClass(node, ...className) {
+export function addClass(node, ...className) {
   if (typeof node === 'string') node = document.querySelector(node);
 
   className.forEach((c) => {
@@ -18,7 +21,7 @@ function addClass(node, ...className) {
   });
 }
 
-function removeClass(node, className) {
+export function removeClass(node, className) {
   if (typeof node === 'string') node = document.querySelector(node);
 
   if (!className) {
@@ -34,7 +37,7 @@ function removeClass(node, className) {
   node.classList.remove(className);
 }
 
-function toggleClass(node, className) {
+export function toggleClass(node, className) {
   if (typeof node === 'string') node = document.querySelector(node);
 
   if (typeof className !== 'string') {
@@ -77,5 +80,5 @@ function setStyle(node, prop, value) {
   node.style[prop] = value;
 }
 
-const css = (node, prop, value) =>
+export const css = (node, prop, value) =>
   !value ? getStyle(node, prop) : setStyle(node, prop, value);
