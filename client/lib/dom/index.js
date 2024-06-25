@@ -6,5 +6,6 @@ export * from './bindEvent.js';
 export * from './css.js';
 export * from './getNode.js';
 export * from './insert.js';
+export * from './showAlert.js';
 // export * from './clearContents.js';
 export { default as clearContents } from './clearContents.js';
