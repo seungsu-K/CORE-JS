@@ -1,76 +1,25 @@
-import {
-  attr,
-  clearContents,
-  diceAnimation,
-  endScroll,
-  getNode,
-  getNodes,
-  insertLast,
-} from './lib/index.js';
+import {} from './lib/index.js';
 
-// 1. 주사위 애니메이션
-// 2. 주사위 굴리기 버튼을 클릭하면 diceAnimation() 실행될 수 있도록
+// xhrPromise.get('https://jsonplaceholder.typicode.com/users').then(console.log);
 
-const [rollingButton, recordButton, resetButton] = getNodes(
-  '.buttonGroup > button'
-);
-const recordListWrapper = getNode('.recordListWrapper');
+// const getData = async () => {
+//   const data = await xhrPromise.get(
+//     'https://jsonplaceholder.typicode.com/users'
+//   );
+//   console.log(data);
+// };
 
-let count = 0;
-let total = 0;
+// getData();
 
-function createItem(value) {
-  const template = `
-    <tr>
-      <td>${++count}</td>
-      <td>${value}</td>
-      <td>${(total += value)}</td>
-    </tr>
-  `;
-  return template;
-}
+// async function getData() {
+//   const data = await xhrPromise.get('https://pokeapi.co/api/v2/pokemon/6');
 
-function renderRecordItem() {
-  // const diveValue = getNode('#cube').getAttribute('dice');
-  const diceValue = Number(attr(getNode('#cube'), 'dice'));
+//   console.log();
 
-  insertLast('.recordList tbody', createItem(diceValue));
+//   insertLast(
+//     document.body,
+//     `<img src="${data.sprites.other.showdown['front_default']}" alt="" />`
+//   );
+// }
 
-  endScroll(recordListWrapper);
-}
-
-const handleRollingDice = (() => {
-  {
-    let isClicked = false;
-    let stopAnimation;
-
-    return () => {
-      if (!isClicked) {
-        stopAnimation = setInterval(diceAnimation, 200);
-        recordButton.disabled = true;
-        resetButton.disabled = true;
-      } else {
-        clearInterval(stopAnimation);
-        recordButton.disabled = false;
-        resetButton.disabled = false;
-      }
-      isClicked = !isClicked;
-    };
-  }
-})();
-
-function handleRecord() {
-  recordListWrapper.hidden = false;
-  renderRecordItem();
-}
-
-function handleReset() {
-  recordListWrapper.hidden = true;
-  clearContents('tbody');
-  count = 0;
-  total = 0;
-}
-
-rollingButton.addEventListener('click', handleRollingDice);
-recordButton.addEventListener('click', handleRecord);
-resetButton.addEventListener('click', handleReset);
+// getData();
