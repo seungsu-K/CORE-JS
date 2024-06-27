@@ -44,7 +44,7 @@ const defaultOptions = {
   timeout: 1000,
 };
 
-function delayP(options) {
+export function delayP(options) {
   let config = { ...defaultOptions };
   if (isNumber(options)) {
     config.timeout = options;
@@ -67,9 +67,9 @@ function delayP(options) {
   });
 }
 
-delayP({
-  shouldRejected: false,
-});
+// delayP({
+//   shouldRejected: false,
+// });
 
 // delayP()
 //   .then(
@@ -126,3 +126,18 @@ async function 라면끓이기() {
 }
 
 // 라면끓이기();
+
+// 포켓몬
+
+async function getData() {
+  const data = await xhrPromise.get('https://pokeapi.co/api/v2/pokemon/6');
+
+  console.log();
+
+  insertLast(
+    document.body,
+    `<img src="${data.sprites.other.showdown['front_default']}" alt="" />`
+  );
+}
+
+// getData();
