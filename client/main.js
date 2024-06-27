@@ -38,7 +38,7 @@ const userCardInner = getNode('.user-card-inner');
 async function renderUserList() {
   renderSpinner(userCardInner);
 
-  // await delayP(2000);
+  // await delayP(1000);
 
   try {
     gsap.to('.loadingSpinner', {
@@ -103,6 +103,9 @@ function handleCreate() {
 
 function handleCancel(e) {
   e.stopPropagation();
+  // 사용안하는 게 좋음
+  // 버블링 막는 예시를 보여주기 위해 div에 class를 넣음
+
   gsap.to('.pop', { autoAlpha: 0 });
   // createButton.classList.remove('open');
 }
