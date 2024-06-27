@@ -5,33 +5,33 @@ const defaultOptions = {
   body: null,
   headers: {
     'Content-Type': 'application/json',
-    'Access=Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': '*',
   },
 };
 
-// fetch => promise
+// fetch  => promise
 
 export const tiger = async (options) => {
   const { url, ...restOptions } = {
     ...defaultOptions,
     ...options,
-    headers: { ...defaultOptions, ...options.headers },
+    headers: {
+      ...defaultOptions.headers,
+      ...options.headers,
+    },
   };
-
   const response = await fetch(url, restOptions);
-  // let data;
 
   if (response.ok) {
     response.data = await response.json();
-    // data = await response.json();
   }
 
   return response;
 };
 
-const result = await tiger({ url: ENDPOINT });
+// const result = await tiger.get(ENDPOINT);
 
-// console.log(await tiger());
+// console.log( result );
 
 tiger.get = (url, options) => {
   return tiger({

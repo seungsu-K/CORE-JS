@@ -5,10 +5,10 @@ import {
   clearContents,
   delayP,
   getNode,
+  tiger,
   renderEmptyCard,
   renderSpinner,
   renderUserCard,
-  tiger,
 } from './lib/index.js';
 
 // xhrPromise.get('https://jsonplaceholder.typicode.com/users').then(console.log);
@@ -44,7 +44,8 @@ async function renderUserList() {
     gsap.to('.loadingSpinner', {
       opacity: 0,
       onComplete() {
-        getNode('.loadingSpinner').remove();
+        this._targets[0].remove();
+        // getNode('.loadingSpinner').remove();
       },
     });
 
