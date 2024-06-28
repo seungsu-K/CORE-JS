@@ -74,3 +74,9 @@ tiger.patch = (url, body, options) => {
     body: JSON.stringify(body),
   });
 };
+
+// IIAFE
+
+// (async function(){
+
+// })()

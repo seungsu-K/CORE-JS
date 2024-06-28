@@ -23,14 +23,13 @@ const ENDPOINT = 'http://localhost:3000/users';
 
 getStorage('text').then((res) => {
   textField.value = res;
+  // 새로고침 했을 때 기본값으로 남겨줌
 });
 
 const textField = getNode('#textField');
 const clear = getNode('button[data-name="clear"]');
 
 function handleTextField() {
-  console.log('입력중');
-
   const value = this.value;
 
   setStorage('text', value);
