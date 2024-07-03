@@ -1,15 +1,24 @@
-const template = document.createElement('template');
+class UserCard extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <div>nickName: kind-tiger</div>
+      <slot name="username"></slot>
+      <slot></slot>
+      <button type="button">btn</button>
+    `;
 
-template.innerHTML = `
-  <div>hello</div>
-  <div>javascript</div>
-`;
+    this.button = this.shadowRoot.querySelector('button');
+  }
 
-const temp = document.querySelector('#temp');
-const app = document.querySelector('#app');
+  connectedCallback() {
+    this.button.addEventListener('click', () => this.clickMe());
+  }
 
-const clone = template.content.cloneNode(true);
+  clickMe() {
+    console.log(this);
+  }
+}
 
-console.log(template);
-
-app.appendChild(clone);
+customElements.define('user-card', UserCard);
