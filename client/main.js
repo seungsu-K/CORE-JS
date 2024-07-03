@@ -1,6 +1,12 @@
-class Button extends HTMLButtonElement {
+class Button extends HTMLElement {
   constructor() {
     super();
+
+    this.attachShadow({ mode: 'open' });
+
+    this.shadowRoot.innerHTML = /* html */ `
+       <button>hello</button>
+    `;
   }
 
   connectedCallback() {}
@@ -8,4 +14,4 @@ class Button extends HTMLButtonElement {
   disconnectedCallback() {}
 }
 
-customElements.define('c-button', Button, { extends: 'button' });
+customElements.define('c-button', Button);
